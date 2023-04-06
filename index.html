@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finances</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Montserrat:wght@200;400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c2ae833b6b.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1><i class="fas fa-wallet"></i>Wallet</h1>
+        <p>Your personal finances manager.</p>
+    </header>
+
+    <main>
+        <section class="transactions">
+
+            <h2 class="title">List of transactions</h2>
+
+            <div class="transactions__transaction-list">
+                <div class="transactions__income-area">
+                    <h3>income:</h3>
+                    <div class="transactions__transaction" id="0">
+                        <p class="transactions__transaction-name"><i class="fas fa-money-bill-wave"></i>Paycheck:</p>
+                        <p class="transactions__transaction-amount">2000PLN <button class="transactions__delete"><i class="fas fa-times"></i></button></p>
+                    </div>
+                </div>
+
+                <div class="transactions__expenses-area">
+                    <h3>Expenses:</h3>
+                    <div class="transactions__transaction" id="1">
+                        <p class="transactions__transaction-name"><i class="fas fa-cart-arrow-down"></i>Paycheck:</p>
+                        <p class="transactions__transaction-amount">-400PLN <button class="transactions__delete"><i class="fas fa-times"></i></button></p>
+                    </div>
+                    <div class="transactions__transaction" id="2">
+                        <p class="transactions__transaction-name"><i class="fas fa-hamburger"></i>Paycheck:</p>
+                        <p class="transactions__transaction-amount">-100PLN <button class="transactions__delete"><i class="fas fa-times"></i></button></p>
+                    </div>
+                    <div class="transactions__transaction" id="3">
+                        <p class="transactions__transaction-name"><i class="fas fa-film"></i>Paycheck:</p>
+                        <p class="transactions__transaction-amount">-50PLN <button class="transactions__delete"><i class="fas fa-times"></i></button></p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="options">
+            <div>
+                <h2 class="title">Available money:</h2>
+                <p class="options__available-money">0PLN</p>
+            </div>
+
+            <div class="options__controls">
+                <button class="options__add-transaction"><i class="fas fa-plus"></i> Add transaction</button>
+                <button class="options__delete-all"><i class="far fa-trash-alt"></i>Delete all</button>
+            </div>
+
+            <div class="options__style-section">
+                <h2 class="title">Choose style:</h2>
+                <div class="options__color-buttons">
+                    <button class="options__light"></button>
+                    <button class="options__light--dark"></button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="add-transaction-panel">
+        <h2 class="title">Add new transaction</h2>
+
+        <label for="name">Name:</label>
+        <small>(Input name of transaction)</small>
+        <input type="text" id="name">
+
+        <label for="amount">Amount:</label>
+        <small>(Input amount of transaction, if you add an expense input minus at start.)</small>
+        <input type="number" id="amount">
+
+        <label for="category">Choose category:</label>
+        <small>( [ + ] means income, [ - ] means expense)</small>
+        <select id="category">
+            <option value="none" selected disabled></option>
+            <option value="income">[ + ] Income</option>
+            <option value="shopping">[ - ] Shopping</option>
+            <option value="food">[ - ] Food</option>
+            <option value="cinema">[ - ] Cinema</option>
+        </select>
+
+        <div class="add-transaction-panel__panel-buttons">
+            <button class="save"><i class="fas fa-save"></i>Save</button>
+            <button class="cancel"><i class="far fa-window-close"></i>Cancel</button>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
+
+</html>

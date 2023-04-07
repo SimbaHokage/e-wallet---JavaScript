@@ -64,7 +64,15 @@ const createNewTransaction = () => {
     <button class="transactions__delete" onclick="deleteTransaction(${ID})"><i class="fas fa-times"></i></button></p>
     `
     
-    parseFloat(amountOfTransaction.value) > 0 ? incomeArea.append(newTransaction) && newTransaction.classList.add('income') : expensesArea.append(newTransaction) && newTransaction.classList.add('expense')
+    // parseFloat(amountOfTransaction.value) > 0 ? incomeArea.append(newTransaction) && newTransaction.classList.add('income') : expensesArea.append(newTransaction) && newTransaction.classList.add('expense')
+
+    if(parseFloat(amountOfTransaction.value) > 0) {
+        incomeArea.append(newTransaction)
+        newTransaction.classList.add('income')
+    } else {
+        expensesArea.append(newTransaction)
+        newTransaction.classList.add('expense')
+    }
 
     moneyArr.push(parseFloat(amountOfTransaction.value))
     countMoney(moneyArr)
@@ -101,15 +109,37 @@ const countMoney = money => {
 const deleteTransaction = id => {
     const transactionToDelete = document.getElementById(id);
     const transactionAmount = parseFloat(transactionToDelete.childNodes[3].innerText)
+    console.log(transactionAmount);
     const indexOfTransaction = moneyArr.indexOf(transactionAmount)
 
-    moneyArr.splice(indexOfTransaction, 1)
-    console.log(transactionToDelete);
     transactionToDelete.classList.contains('income') ? incomeArea.removeChild(transactionToDelete) : expensesArea.removeChild(transactionToDelete)
-
+    
+    moneyArr.splice(indexOfTransaction, 1)
     countMoney(moneyArr)
+}
+
+const deleteAllTransactions = () => {
+    incomeArea.innerHTML = '<h3>Income:</h3>'
+    expensesArea.innerHTML = '<h3>Expenses:</h3>'
+    availableMoney.textContent = '0PLN'
+    moneyArr = [0]
+}
+
+const changeStyleToLight = () => {
+    root.style.setProperty('--first-color', '#F9F9F9')
+    root.style.setProperty('--second-color', '#14161F')
+    root.style.setProperty('--border-color', 'rgba(0, 0, 0, .2)')
+}
+
+const changeStyleToDark = () => {
+    root.style.setProperty('--first-color', '#14161F')
+    root.style.setProperty('--second-color', '#F9F9F9')
+    root.style.setProperty('--border-color', 'rgba(255, 255, 255, .4)')
 }
 
 btnAddTransaction.addEventListener('click', showPanel);
 cancelBtn.addEventListener('click', hidePanel);
 btnSave.addEventListener('click', checkForm);
+btnDeleteAll.addEventListener('click', deleteAllTransactions)
+btnLightTheme.addEventListener('click', changeStyleToLight)
+btnDarkTheme.addEventListener('click', changeStyleToDark)
